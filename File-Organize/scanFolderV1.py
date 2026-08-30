@@ -2,16 +2,14 @@ import os
 import shutil 
 
 isi_folder_tujuan = os.listdir("/home/hayqal/Downloads")
-folder_yang_dituju = "/home/hayqal/Downloads"
+folder_yang_dituju = "/home/hayqal/Downloads" 
 
 
 
 def folder(folders) : 
     for folder in folders :
         organize(folder) 
-
-    else : 
-        return 'selesai proses'
+    return 'selesai proses'
 
 def organize(name) :
     lokasi_fail_sekarang = os.path.join(folder_yang_dituju, name)
@@ -46,4 +44,4 @@ def organize(name) :
     shutil.move(lokasi_fail_sekarang, check_folder)
     print(f"file {nama} berjaya di alihkan ke {folderBetul}")
 
-folder(isi_folder_tujuan)
+print(folder(isi_folder_tujuan))

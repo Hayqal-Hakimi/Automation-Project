@@ -1,0 +1,16 @@
+{ 
+    "download_path" : "/home/hayqal/Downloads",
+    "duplicate_folder" : "Duplicate",
+    "log_file" : "log_fileOrganize",
+
+    "categories" : { 
+        "Images" : [".jpg", ".jpeg", ".png", ".webp", ".gif", ".svg", ".ico"],
+        "Documents" : [".pdf", ".docx", ".doc", ".xlsx", ".xls", ".pptx", ".ppt", ".txt", ".rtf", ".csv"],
+        "Media" : [".mp4", ".mkv", ".avi", ".mov", ".mp3", ".wav", ".flac"],
+        "Archives" : [".zip", ".rar", ".7z", ".tar", ".gz"],
+        "IsoDisk" : [".iso", ".img", ".ima", ".vmdk", ".vhd", ".vhdx", ".nrg"],
+        "InstallerCode" : [".exe", ".msi", ".deb", ".rpm", ".sh", ".py", ".js", ".html", ".css"],
+        "Other" : []
+        
+    }    
+}
