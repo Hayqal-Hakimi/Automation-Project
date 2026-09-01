@@ -14,10 +14,11 @@ def tulisLog(mesej) :
     masa = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     with open(config["log_file"] , "a") as isi : 
         isi.write(f"[{masa}] Log : {mesej}\n")
+        print(f"[{masa}] Log : {mesej}\n")
 
 #memilih kategori folder 
-def asingKategori(formatFile) : 
-    formatFile = formatFile.lower() 
+def asingKategori(extension) : 
+    formatFile = extension.lower() 
     for folder, formatValid in config["categories"].items() :
         if formatFile in formatValid : 
              return folder
@@ -55,7 +56,32 @@ def filterHash(fileBaru,folderDestinasi ) :
                 if fullHash_UntukFileBaru == fullHash_UntukFileSemasa :
                     return True
     return False
-                
+
+def organize(name) :
+    pathFileBaru = os.path.join(config["download_path"], name)
+    if os.path.isdir(pathFileBaru) : 
+        return
+    fileName, extension = os.path.splitext(name)
+    folderDestinasi = asingKategori(extension)
+    fullPathFolder_fileBaru = os.path.join(config["download_path"], folderDestinasi)
+    checkDuplicateFile = os.path.join(fullPathFolder_fileBaru, name)
+    os.makedirs(fullPathFolder_fileBaru, exist_ok=True)
+    if os.path.exists(checkDuplicateFile) : 
+        folderDuplicate(pathFileBaru)
+        (tulisLog(f"file{fileName} dipindah ke folder{config['duplicate_folder']}"))
+        return
+    checkHash = filterHash(pathFileBaru, fullPathFolder_fileBaru)
+    if not checkHash : 
+        shutil.move(pathFileBaru, fullPathFolder_fileBaru)
+        (tulisLog(f"file{fileName} dipindah ke folder {folderDestinasi}"))
+    else : 
+        folderDuplicate(pathFileBaru)
+        (tulisLog(f"file{fileName} dipindah ke folder{config['duplicate_folder']}"))
+
+def folderDuplicate(fileYangNakMasuk) :
+    fullPath_FileDup = os.path.join(config["download_path"],config["duplicate_folder"]) 
+    os.makedirs(fullPath_FileDup, exist_ok=True)
+    shutil.move(fileYangNakMasuk,fullPath_FileDup)
 
 
 
