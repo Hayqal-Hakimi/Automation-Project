@@ -57,6 +57,7 @@ def filterHash(fileBaru,folderDestinasi ) :
                     return True
     return False
 
+#func yang buat kerja pindah memindah , yang pakai func func lain untuk buat keputusan file semasa pergi ke mana
 def organize(name) :
     pathFileBaru = os.path.join(config["download_path"], name)
     if os.path.isdir(pathFileBaru) : 
@@ -78,17 +79,16 @@ def organize(name) :
         folderDuplicate(pathFileBaru)
         (tulisLog(f"file{fileName} dipindah ke folder{config['duplicate_folder']}"))
 
+#func untuk file yang duplicate
 def folderDuplicate(fileYangNakMasuk) :
     fullPath_FileDup = os.path.join(config["download_path"],config["duplicate_folder"]) 
     os.makedirs(fullPath_FileDup, exist_ok=True)
     shutil.move(fileYangNakMasuk,fullPath_FileDup)
 
-
-
-
-
 config = bacaConfig()
-
+isiFolder = os.listdir(config["download_path"])
+for name in isiFolder : 
+    organize(name)
 #ABAIKAN CODE DIBAWAH KERANA INI DARI V1. AKAN DIUBAH ,DITMABAH ,DIBUANG NANTI
 
     
