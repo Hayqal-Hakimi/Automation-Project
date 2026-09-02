@@ -89,26 +89,3 @@ config = bacaConfig()
 isiFolder = os.listdir(config["download_path"])
 for name in isiFolder : 
     organize(name)
-#ABAIKAN CODE DIBAWAH KERANA INI DARI V1. AKAN DIUBAH ,DITMABAH ,DIBUANG NANTI
-
-    
-# def folder(folders) : 
-#     for folder in folders :
-#         organize(folder) 
-#     return 'selesai proses'
-
-# def organize(name) :
-#     lokasi_fail_sekarang = os.path.join("download_path", name)
-#     if os.path.isdir(lokasi_fail_sekarang) : 
-#         return 
-    
-#     nama, format_file = os.path.splitext(name)
-#     format_file = format_file.lower()
-#     for 
-
-#     check_folder = os.path.join(folder_yang_dituju, folderBetul)
-#     os.makedirs(check_folder, exist_ok=True)
-#     shutil.move(lokasi_fail_sekarang, check_folder)
-#     print(f"file {nama} berjaya di alihkan ke {folderBetul}")
-
-# print(folder(isi_folder_tujuan))
